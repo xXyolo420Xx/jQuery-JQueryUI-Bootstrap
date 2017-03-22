@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<script src='librerias.js'></script> <!--Cargamos las librerias necesarias-->
+</head>
+
+<body>
+<script>
+	/*Al cargar la página hacemos que la pestaña
+	de la página en la cual estamos no sea clickable*/
+	$(document).ready(navbar(), removelink("video"), crumb("Video"));
+</script>
+<div class='row'>
+	<div class='col-md-4'><!--Para el div usamos la clase col-xm-6 para que ocupe la mitad del container y si lo vemos en una pantalla pequeña se ponga uno encima del otro-->
+		<div class="medias embed-responsive embed-responsive-16by9">
+		  <iframe class="embed-responsive-item" src="videos/video.mp4"></iframe>
+		</div>
+	</div>
+	<div class='medias col-md-4'> <!--Idem que el otro video-->
+		<video controls width="100%" height="100%" autoplay=1>
+			<source src="videos/recetapollo.mp4" type="video/mp4">
+            <source src="videos/recetapollo.ogv" type="video/ogv">
+            <source src="videos/recetapollo.webm" type="video/webm">
+			<object type="application/x-shockwave-flash" data="videos/player_flv_maxi.swf" height="240" width="360">
+				<param name="movie" value="videos/player_flv_maxi.swf">
+				<param name="FlashVars" value="flv=videos/recetapollo.flv">
+				<embed type="application/x-shockwave-flash" width="360" height="240" src="videos/player_flv_maxi.swf"
+				flashvars="flv=videos/recetapollo.flv">
+				</embed>
+			</object>
+        </video>
+	</div>
+		<div class='medias col-md-4'>
+        <audio controls>
+            <source src="audios/Aretha.mp3" type="audio/mp3">
+            <source src="audios/Aretha.ogg" type="audio/ogg">
+        </audio>
+        <div class="controles">
+            <img id="pause" src="audios/Stop1Hot.png">
+            <img id="play" src="audios/Play1Normal.png">
+            <img id="plus" src="audios/VolumeNormal.png" >
+            <img id="minus" src="audios/VolumeNormalRed.png">
+            <script>addControls()</script> <!--Añadimos los eventlisteners para las imágenes-->
+        </div>
+</div>
+</div>
+
+
+<script src='footer.js'></script>
+</body>
+</html>

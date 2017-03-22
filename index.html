@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<script src='librerias.js'></script> <!--Cargamos las librerias necesarias-->
+</head>
+
+<body>
+<script>
+	/*Al cargar la página hacemos que la pestaña
+	de la página en la cual estamos no sea clickable*/
+	$(document).ready(navbar(), removelink("home"), crumb("Home"));
+</script>
+	<div class='container'>
+		<div class="container">
+		  <div class="jumbotron">
+		    <h1>Bienvenido</h1>
+			<p>He empleado la libreria jQueryUI para ciertos efectos, he utilizado solamente sublimeText para la edición de código.</p>
+			<p>También he definido ciertos estilos personalizados para algunos elementos en cssSimeon/css.css</p>
+			<p>La expresión regular del campo de formulario teléfono la he hecho yo, acepta numeros nacionales sin prefijo y internacionales con prefijo, la del campo email la he cogido de <a href='http://emailregex.com/'>aqui.</a> </p>
+		    <p>Vamos a estar aprendiendo ciertas funciones de efectos en jQuery y validación de formularios:</p>
+		    <h2>Índice</h2>
+			    <ul>
+							<li id='video'><a href='video.html'>Video</a></li>
+							<li id='show'><a href='show.html'>show() y hide()</a></li>
+							<li id='fade'><a href='fade.html'>Fading</a></li>
+							<li id='slide'><a href='slide.html'>Sliding</a></li>
+							<li id='animate'><a href='animate.html'>Animate y Delay</a></li>
+							<li id='form'><a href='form.html'>Formularios</a></li>
+			    </ul>
+		  </div>
+
+		</div>
+	</div>
+<script src='footer.js'></script>
+</body>
+</html>

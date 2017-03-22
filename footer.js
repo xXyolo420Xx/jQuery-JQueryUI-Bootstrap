@@ -1,0 +1,1 @@
+document.write("<footer class='panel-footer'>&copy Simeon Shopov 2016</footer>")

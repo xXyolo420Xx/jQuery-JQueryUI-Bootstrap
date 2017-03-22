@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<script src='librerias.js'></script> <!--Cargamos las librerias necesarias-->
+</head>
+
+<body>
+<script>
+	/*Al cargar la página hacemos que la pestaña
+	de la página en la cual estamos no sea clickable*/
+	$(document).ready(navbar(), removelink("fade"), crumb("Fading"));
+
+
+</script>
+	
+	<div class='row'>
+		<div id='obama' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/barack-obama.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-xs-6'>
+					<button type='button' class='btn btn-success' id='fadeInObama'>fadeInObama</button>
+					<button type='button' class='btn btn-danger' id='fadeOutObama'>fadeOutObama</button>
+				</div>
+				<div class='col-xs-6 radio'>
+					<span>Tiempo</span><br>
+					<div class='radio'><label><input type='radio' name='time' value=0 checked>De golpe</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=1000>1s</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=2000>2s</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=3000>3s</label></div>
+				</div>
+			</div>
+		<script>
+		$('#fadeInObama').on('click', function(){
+			fadeInPresident($('#obama'), parseInt($('input[name=time]:checked').val()));
+		});
+		 $('#fadeInObama').on('click', function(){
+			$('#obamaCode').text("$('#obama').fadeIn("+$('input[name=time]:checked').val()+")");
+		});
+		$('#fadeOutObama').on('click', function(){
+			fadeOutPresident($('#obama'), parseInt($('input[name=time]:checked').val()));
+		});
+		 $('#fadeOutObama').on('click', function(){
+			$('#obamaCode').text("$('#obama').fadeOut("+$('input[name=time]:checked').val()+")");
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Las funciones fadeIn() y fadeOut() al ser llamadas van bajando o subiendo la transparencia de un elemento, al igual que show y hide pero hacer la animación haciendolo mas pequeño, se les puede pasar o no un parámetro:<ul class='bg-warning'>
+				<li>Número en milisegundos</li>
+				<li>slow (600 milisegundos)</li>
+				<li>fast (200 milisegundos)</li>
+			</ul>
+			<code id='obamaCode'>Presiona un botón para ver el código ejectuado</code>
+			</p>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='abraham' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/abraham-lincoln.png'>
+		</div>
+		<div class='col-sm-5'>
+					<div class='row'>
+				<div class='col-xs-6'>
+					<button type='button' class='btn btn-success' id='fadeInAbraham'>fadeIn Abraham</button>
+					<button type='button' class='btn btn-danger' id='fadeOutAbraham'>fadeOut Abraham</button>
+				</div>
+				<div class='col-xs-6 radio'>
+					<span>Fondo de la imagen</span><br>
+					<div class='radio'><label><input type='radio' name='bg' value='aqua' checked>Aqua</label></div>
+					<div class='radio'><label><input type='radio' name='bg' value='mediumslateblue'>mediumslateblue</label></div>
+					<div class='radio'><label><input type='radio' name='bg' value=palevioletred>Palevioletred</label></div>
+				</div>
+			</div>
+		<script>
+		$('#fadeInAbraham').on('click', function(){
+			fadeInPresidentBG($('#abraham'), $('input[name=bg]:checked').val());
+		});
+		$('#fadeInAbraham').on('click', function(){
+			$('#abrahamCode').text("$('abraham').fadeIn(600, function(){$('#abraham').parent().css('background-color',"+$('input[name=bg]:checked').val()+")});");
+		});
+		$('#fadeOutAbraham').on('click', function(){
+			fadeOutPresidentBG($('#abraham'), $('input[name=bg]:checked').val());
+		});
+		$('#fadeOutAbraham').on('click', function(){
+			$('#abrahamCode').text("$('abraham').fadeOut(600, function(){$('#abraham').parent().css('background-color',"+$('input[name=bg]:checked').val()+")});");
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Además, como segundo parámetro (al igual que show() y hide()) se le puede pasar una funcion a completar cuando se complete la animación</p>
+			<code id='abrahamCode'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='kim' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/kim-jong-il.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-sm-12'>
+					<button type='button' class='btn btn-success' id='btn-kim'>fadeToggle() kim</button>
+				</div>
+			</div>
+		<script>
+		$('#btn-kim').on('click', function(){
+			$('#kim').fadeToggle(400);
+		});
+		$('#btn-kim').on('click', function(){
+			$('#codeKim').text("$('#kim').fadeToggle(400);")			
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Funciona exáctamente como las anteriores, la única es que sirve tanto para mostrar como para ocultar los elementos, los va alternando, si el elemento esta en fadeOut() lo pondrá en fadeIn() y viceversa.
+			</p>
+			<code id='codeKim'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='putin' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/vladimir-putin.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-sm-6'>
+					<button type='button' class='btn btn-success' id='btn-putin'>fadeTo()</button>
+				</div>
+				<div class='col-xs-6 radio'>
+					<span>Efecto</span><br>
+					<div class='radio'><label><input type='radio' name='grado' value=0.15 checked>0.15</label></div>
+					<div class='radio'><label><input type='radio' name='grado' value=0.3>0.3</label></div>
+					<div class='radio'><label><input type='radio' name='grado' value=0.5>0.5</label></div>
+					<div class='radio'><label><input type='radio' name='grado' value=0.7>0.7</label></div>
+				</div>
+			</div>
+		<script>
+		$('#btn-putin').on('click', function(){
+			$('#putin').fadeTo('slow', $('input[name=grado]:checked').val());
+		});
+		$('#btn-putin').on('click', function(){
+			$('#codePutin').text("$('#putin').fadeTo('slow', "+$('input[name=grado]:checked').val()+");")			
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>fadeTo() nos permite poner el grado de opacidad a la que queremos hacer el fadeOut() a nuestro elemento. Este es el único elemento del grupo de los fade que requiere que se le asigne la velocidad de la animación.
+			</p>
+			<code id='codePutin'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+<script src='footer.js'></script>
+</body>
+</html>

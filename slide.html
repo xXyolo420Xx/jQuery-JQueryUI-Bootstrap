@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<script src='librerias.js'></script> <!--Cargamos las librerias necesarias-->
+</head>
+
+<body>
+<script>
+	/*Al cargar la página hacemos que la pestaña
+	de la página en la cual estamos no sea clickable
+	y ponemos el breadcrumb*/
+	$(document).ready(navbar(), removelink("slide"), crumb("Slide"));
+</script>
+<div class='row'>
+		<div id='obama' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/barack-obama.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-xs-6'>
+					<button type='button' class='btn btn-success' id='slideDownObama'>slideDown Obama</button>
+					<button type='button' class='btn btn-danger' id='slideUpObama'>slideUp Obama</button>
+				</div>
+				<div class='col-xs-3 radio'>
+					<span>Tiempo</span><br>
+					<div class='radio'><label><input type='radio' name='time' value=0 checked>De golpe</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=1000>1s</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=2000>2s</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=3000>3s</label></div>
+				</div>
+				<div class='col-xs-3 radio'>
+					<span>Easing</span><br>
+					<div class='radio'><label><input type='radio' name='easing' value='linear' checked>linear</label></div>
+					<div class='radio'><label><input type='radio' name='easing' value='swing'>swing</label></div>
+				</div>
+			</div>
+		<script>
+		$('#slideDownObama').on('click', function(){
+			slideDownPresident($('#obama'), parseInt($('input[name=time]:checked').val()), $('input[name=easing]:checked').val());
+		});
+		 $('#slideDownObama').on('click', function(){
+			$('#obamaCode').text("$('#obama').slideDown("+$('input[name=time]:checked').val()+", '"+$('input[name=easing]:checked').val()+"')");
+		});
+		$('#slideUpObama').on('click', function(){
+			slideUpPresident($('#obama'), parseInt($('input[name=time]:checked').val()), $('input[name=easing]:checked').val());
+		});
+		 $('#slideUpObama').on('click', function(){
+			$('#obamaCode').text("$('#obama').slideUp("+$('input[name=time]:checked').val()+", '"+$('input[name=easing]:checked').val()+"')");
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Las funciones slideDown() y slideUp() son muy parecidas a las show, hide, y las del grupo de fade, pero con una animación diferente, de la misma manera que hide y show se les puede asignar el tiempo de la animación, ademas se puede cambiar el easing del sliding a swing o linear, si no se le pása parametro al easing por defecto sera swing:<ul class='bg-warning'>
+				<li>Swing: mas rapido por la mitad de la animacion y mas lento por el final y el principio</li>
+				<li>Linear: velocidad de animación constante</li>
+			</ul>
+			<code id='obamaCode'>Presiona un botón para ver el código ejectuado</code>
+			</p>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='abraham' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/abraham-lincoln.png'>
+		</div>
+		<div class='col-sm-5'>
+					<div class='row'>
+				<div class='col-xs-6'>
+					<button type='button' class='btn btn-success' id='slideDownAbraham'>slideDown Abraham</button>
+					<button type='button' class='btn btn-danger' id='slideUpAbraham'>slideUp Abraham</button>
+				</div>
+				<div class='col-xs-6 radio'>
+					<span>Fondo de la imagen</span><br>
+					<div class='radio'><label><input type='radio' name='bg' value='aqua' checked>Aqua</label></div>
+					<div class='radio'><label><input type='radio' name='bg' value='mediumslateblue'>mediumslateblue</label></div>
+					<div class='radio'><label><input type='radio' name='bg' value=palevioletred>Palevioletred</label></div>
+				</div>
+			</div>
+		<script>
+		$('#slideDownAbraham').on('click', function(){
+			slideDownPresidentBG($('#abraham'), $('input[name=bg]:checked').val());
+		});
+		$('#slideDownAbraham').on('click', function(){
+			$('#abrahamCode').text("$('abraham').slideDown(600, function(){$('#abraham').parent().css('background-color',"+$('input[name=bg]:checked').val()+")});");
+		});
+		$('#slideUpAbraham').on('click', function(){
+			slideUpPresidentBG($('#abraham'), $('input[name=bg]:checked').val());
+		});
+		$('#slideUpAbraham').on('click', function(){
+			$('#abrahamCode').text("$('abraham').slideUp(600, function(){$('#abraham').parent().css('background-color',"+$('input[name=bg]:checked').val()+")});");
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>También se les puede pasar como segundo parámetro una funcion a realizar cuando la animación este finalizada</p>
+			<code id='abrahamCode'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='kim' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/kim-jong-il.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-sm-12'>
+					<button type='button' class='btn btn-success' id='btn-kim'>slideToggle kim</button>
+				</div>
+			</div>
+		<script>
+		$('#btn-kim').on('click', function(){
+			$('#kim').slideToggle(400);
+		});
+		$('#btn-kim').on('click', function(){
+			$('#codeKim').text("$('#kim').slideToggle(400);")			
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Funciona exáctamente como las anteriores, la única es que sirve tanto para mostrar como para ocultar los elementos, los va alternando, si el elemento esta en slideIn() lo pondrá en slideDown() y viceversa.
+			</p>
+			<code id='codeKim'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+<script src='footer.js'></script>
+</body>
+</html>

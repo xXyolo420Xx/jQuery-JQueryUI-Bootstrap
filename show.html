@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<script src='librerias.js'></script> <!--Cargamos las librerias necesarias-->
+</head>
+
+<body>
+<script>
+	/*Al cargar la página hacemos que la pestaña
+	de la página en la cual estamos no sea clickable*/
+	$(document).ready(navbar(), removelink("show"), crumb("Show() y Hide()"));
+</script>
+
+	<div class='row'>
+		<div id='obama' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/barack-obama.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-xs-6'>
+					<button type='button' class='btn btn-success' id='showObama'>ver Obama</button>
+					<button type='button' class='btn btn-danger' id='hideObama'>esconder Obama</button>
+				</div>
+				<div class='col-xs-6 radio'>
+					<span>Tiempo</span><br>
+					<div class='radio'><label><input type='radio' name='time' value=0 checked>De golpe</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=1000>1s</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=2000>2s</label></div>
+					<div class='radio'><label><input type='radio' name='time' value=3000>3s</label></div>
+				</div>
+			</div>
+		<script>
+		$('#showObama').on('click', function(){
+			showPresident($('#obama'), parseInt($('input[name=time]:checked').val()));
+		});
+		 $('#showObama').on('click', function(){
+			$('#obamaCode').text("$('#obama').show("+$('input[name=time]:checked').val()+")");
+		});
+		$('#hideObama').on('click', function(){
+			hidePresident($('#obama'), parseInt($('input[name=time]:checked').val()));
+		});
+		 $('#hideObama').on('click', function(){
+			$('#obamaCode').text("$('#obama').hide("+$('input[name=time]:checked').val()+")");
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Las funciones show() y hide() al ser llamadas escoden o visualizan el elemento sobre el que han sido llamadas, se les puede pasar o no un parámetro:<ul class='bg-warning'>
+				<li>Número en milisegundos</li>
+				<li>slow (600 milisegundos)</li>
+				<li>fast (200 milisegundos)</li>
+			</ul>
+			<code id='obamaCode'>Presiona un botón para ver el código ejectuado</code>
+			</p>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='abraham' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/abraham-lincoln.png'>
+		</div>
+		<div class='col-sm-5'>
+					<div class='row'>
+				<div class='col-xs-6'>
+					<button type='button' class='btn btn-success' id='showAbraham'>ver Abraham</button>
+					<button type='button' class='btn btn-danger' id='hideAbraham'>esconder Abraham</button>
+				</div>
+				<div class='col-xs-6 radio'>
+					<span>Fondo de la imagen</span><br>
+					<div class='radio'><label><input type='radio' name='bg' value='aqua' checked>Aqua</label></div>
+					<div class='radio'><label><input type='radio' name='bg' value='mediumslateblue'>mediumslateblue</label></div>
+					<div class='radio'><label><input type='radio' name='bg' value=palevioletred>Palevioletred</label></div>
+				</div>
+			</div>
+		<script>
+		$('#showAbraham').on('click', function(){
+			showPresidentBG($('#abraham'), $('input[name=bg]:checked').val());
+		});
+		$('#showAbraham').on('click', function(){
+			$('#abrahamCode').text("$('abraham').show(600, function(){$('#abraham').parent().css('background-color',"+$('input[name=bg]:checked').val()+")});");
+		});
+		$('#hideAbraham').on('click', function(){
+			hidePresidentBG($('#abraham'), $('input[name=bg]:checked').val());
+		});
+		$('#hideAbraham').on('click', function(){
+			$('#abrahamCode').text("$('abraham').hide(600, function(){$('#abraham').parent().css('background-color',"+$('input[name=bg]:checked').val()+")});");
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Además, como segundo parámetro se le puede pasar una funcion a completar cuando se complete la animación</p>
+			<code id='abrahamCode'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='kim' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/kim-jong-il.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-sm-12'>
+					<button type='button' class='btn btn-success' id='btn-kim'>Toggle() kim</button>
+				</div>
+			</div>
+		<script>
+		$('#btn-kim').on('click', function(){
+			$('#kim').toggle(400);
+		});
+		$('#btn-kim').on('click', function(){
+			$('#codeKim').text("$('#kim').toggle(400);")			
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Funciona exáctamente como las anteriores, la única es que sirve tanto para mostrar como para ocultar los elementos, los va alternando, si el elemento esta en hide() lo pondrá en show() y viceversa.
+			</p>
+			<code id='codeKim'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+	<div class='row'>
+		<div id='putin' class='col-sm-3'>
+			<img  width='200px' height='200px' src='img/vladimir-putin.png'>
+		</div>
+		<div class='col-sm-5'>
+			<div class='row'>
+				<div class='col-sm-6'>
+					<button type='button' class='btn btn-success' id='btn-putin'>toggle() putin con efecto</button>
+				</div>
+				<div class='col-xs-6 radio'>
+					<span>Efecto</span><br>
+					<div class='radio'><label><input type='radio' name='effect' value='explode' checked>explode</label></div>
+					<div class='radio'><label><input type='radio' name='effect' value='blind'>blind</label></div>
+					<div class='radio'><label><input type='radio' name='effect' value='bounce'>bounce</label></div>
+					<div class='radio'><label><input type='radio' name='effect' value='puff'>puff</label></div>
+				</div>
+			</div>
+		<script>
+		$('#btn-putin').on('click', function(){
+			$('#putin').toggle($('input[name=effect]:checked').val());
+		});
+		$('#btn-putin').on('click', function(){
+			$('#codePutin').text("$('#putin').toggle('"+$('input[name=effect]:checked').val()+"');")			
+		});
+		</script>
+		</div>
+		<div class='col-sm-4'>
+			<p class='bg-warning'>Con jQueryUI podemos añadir efectos a muchas funciones de jQuery
+			</p>
+			<code id='codePutin'>Presiona un botón para ver el código ejectuado</code>
+		</div>
+	</div>
+	<hr>
+
+<script src='footer.js'></script>
+</body>
+</html>

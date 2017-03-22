@@ -1,0 +1,16 @@
+
+/*Estilo de márgenes para la página video*/
+.medias{
+	margin-top:15px;
+}
+/*Estilo Para el footer*/
+footer{
+	margin-top:20px;
+	text-align: right;
+}
+/*Estilo Los separadores*/
+hr{
+	height: 6px;
+	background: url(../img/hr.png) repeat-x 0 0;
+    border: 0;
+}
